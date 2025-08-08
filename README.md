@@ -1,4 +1,4 @@
-# Legal Assistant India 🏛️
+# Legal Assistant India 🏛️ || live preview: https://legal420ai.netlify.app/
 
 A simple legal assistant using HTML, CSS, and JavaScript that provides AI-powered legal guidance for Indian citizens.
 
