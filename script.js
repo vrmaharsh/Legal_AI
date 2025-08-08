@@ -1,8 +1,5 @@
-// API Key storage helpers (stored locally in the browser)
-const STORAGE_KEY = 'gemini_api_key';
-const getApiKey = () => localStorage.getItem(STORAGE_KEY) || '';
-const setApiKey = (key) => localStorage.setItem(STORAGE_KEY, key.trim());
-const clearApiKey = () => localStorage.removeItem(STORAGE_KEY);
+// API endpoint for the backend function
+const API_ENDPOINT = '/.netlify/functions/analyze-legal';
 
 // DOM Elements
 const form = document.getElementById('legal-form');
@@ -18,37 +15,20 @@ const apiKeyInput = document.getElementById('api-key-input');
 const saveKeyBtn = document.getElementById('save-key-btn');
 const clearKeyBtn = document.getElementById('clear-key-btn');
 
-// Check API key on page load
+// Check API status on page load
 window.addEventListener('DOMContentLoaded', function() {
-    const key = getApiKey();
-    if (key) {
-        apiStatus.innerHTML = '<div class="status-success">✅ API Key Configured - Ready to analyze legal queries</div>';
-    } else {
-        apiStatus.innerHTML = '<div class="status-error">⚠️ API Key Missing - Add your Gemini API key above and click Save</div>';
-    }
+    apiStatus.innerHTML = '<div class="status-success">✅ Legal Assistant Ready - No API key needed!</div>';
 });
 
-// API key actions
+// API key actions (now hidden since we don't need user API keys)
 if (saveKeyBtn) {
-    saveKeyBtn.addEventListener('click', () => {
-        const key = (apiKeyInput?.value || '').trim();
-        if (!key) {
-            showError('Please paste a valid Gemini API key');
-            return;
-        }
-        setApiKey(key);
-        hideError();
-        apiStatus.innerHTML = '<div class="status-success">✅ API Key Saved - Ready to analyze legal queries</div>';
-        apiKeyInput.value = '';
-    });
+    saveKeyBtn.style.display = 'none';
 }
-
 if (clearKeyBtn) {
-    clearKeyBtn.addEventListener('click', () => {
-        clearApiKey();
-        hideError();
-        apiStatus.innerHTML = '<div class="status-error">⚠️ API Key Cleared - Please add your Gemini API key above</div>';
-    });
+    clearKeyBtn.style.display = 'none';
+}
+if (apiKeyInput) {
+    apiKeyInput.style.display = 'none';
 }
 
 // Helper function to clean JSON response
@@ -202,143 +182,41 @@ async function analyzeLegalQuery(query) {
         return;
     }
 
-    const API_KEY = getApiKey();
-    if (!API_KEY) {
-        showError('Please add your Gemini API key using the input above and click Save');
-        return;
-    }
-
     showLoading();
     hideError();
     results.classList.add('hidden');
 
     try {
-        // Step 1: Language detection and translation
-        const languageResponse = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                contents: [{
-                    parts: [{
-                        text: `Analyze this text and provide language detection and translation:
-
-Text: "${query}"
-
-Respond in this exact JSON format:
-{
-    "detectedLanguage": "language_code",
-    "translatedQuery": "translated_text_in_english"
-}`
-                    }]
-                }],
-                generationConfig: {
-                    temperature: 0.7,
-                    topK: 40,
-                    topP: 0.95,
-                    maxOutputTokens: 1024,
-                }
-            })
-        });
-
-        const languageData = await languageResponse.json();
-        const languageText = languageData?.candidates?.[0]?.content?.parts?.[0]?.text || '';
-        
-        let parsedLanguageData;
-        try {
-            const cleanedLanguageText = cleanJsonResponse(languageText);
-            parsedLanguageData = JSON.parse(cleanedLanguageText);
-        } catch (parseError) {
-            parsedLanguageData = {
-                detectedLanguage: 'en',
-                translatedQuery: query
-            };
-        }
-
-        // Step 2: Legal analysis
         const selectedLanguage = (languageSelect?.value || 'auto');
-        const outputLanguageInstruction = selectedLanguage && selectedLanguage !== 'auto' ? `
-Write the values for "explanation" and "suggestedAction" in the language code: ${selectedLanguage}.` : 'Write all text values in English.';
-
-        const legalResponse = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`, {
+        
+        // Call our backend API
+        const response = await fetch(API_ENDPOINT, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                contents: [{
-                    parts: [{
-                        text: `As an expert in Indian law, analyze this legal query:
-
-Query: "${parsedLanguageData.translatedQuery}"
-
-Provide comprehensive analysis in this exact JSON format:
-{
-    "legalIssueType": "type of legal issue",
-    "relevantLaws": ["list of relevant Indian laws, IPC sections, acts"],
-    "explanation": "detailed explanation of relevant laws",
-    "suggestedAction": "practical advice on next steps",
-    "extractedEntities": {
-        "names": ["person names if any"],
-        "dates": ["dates if any"],
-        "crimes": ["crimes/offenses if any"],
-        "locations": ["locations if any"]
-    }
-}
-
-Focus on Indian Penal Code (IPC) sections, Constitutional provisions, and practical legal advice.
-
-Important:
-- Return only valid JSON with the exact keys above.
-- Do not include code fences or extra commentary.
-- ${outputLanguageInstruction}`
-                    }]
-                }],
-                generationConfig: {
-                    temperature: 0.7,
-                    topK: 40,
-                    topP: 0.95,
-                    maxOutputTokens: 2048,
-                }
+                query: query,
+                selectedLanguage: selectedLanguage
             })
         });
 
-        const legalData = await legalResponse.json();
-        const legalText = legalData?.candidates?.[0]?.content?.parts?.[0]?.text || '';
-        
-        let parsedLegalData;
-        try {
-            const cleanedLegalText = cleanJsonResponse(legalText);
-            parsedLegalData = JSON.parse(cleanedLegalText);
-        } catch (parseError) {
-            parsedLegalData = {
-                legalIssueType: "General Legal Query",
-                relevantLaws: ["Please consult a lawyer for specific legal advice"],
-                explanation: "Unable to parse legal analysis. Please try rephrasing your query.",
-                suggestedAction: "Consult with a qualified lawyer for detailed legal advice.",
-                extractedEntities: {
-                    names: [],
-                    dates: [],
-                    crimes: [],
-                    locations: []
-                }
-            };
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        // Combine results
-        const analysis = {
-            originalQuery: query,
-            detectedLanguage: parsedLanguageData.detectedLanguage,
-            translatedQuery: parsedLanguageData.translatedQuery,
-            ...parsedLegalData
-        };
+        const result = await response.json();
+        
+        if (!result.success) {
+            throw new Error(result.error || 'Analysis failed');
+        }
 
-        displayResults(analysis);
-
+        // Display the results
+        displayResults(result.data.legalAnalysis);
+        
     } catch (error) {
         console.error('Error:', error);
-        showError('Failed to analyze your query. Please try again.');
+        showError(`Analysis failed: ${error.message}`);
     } finally {
         hideLoading();
     }

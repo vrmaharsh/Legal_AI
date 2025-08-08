@@ -17,13 +17,18 @@ The **simplest possible** legal assistant using just HTML, CSS, and JavaScript.
 ✅ **Works everywhere** - Any browser, any server  
 ✅ **No build process** - Just open the HTML file    
 
-## Setup (3 Simple Steps)
+## Setup (2 Simple Steps)
 
 1. **Download the files**
 2. **Open `index.html` in your browser**
-3. **Paste your Gemini API key** in the "Gemini API Key" box at the top and click **Save**
 
-That's it! No installation, no build process, no complex setup.
+That's it! No API key needed, no installation, no build process.
+
+## For Production Deployment
+
+To deploy with your own API key:
+1. Add your Gemini API key as an environment variable: `GEMINI_API_KEY`
+2. Deploy to Netlify - the serverless function will handle API calls securely
 
 ## Features
 - 🌍 Multi-language support (10+ Indian languages)
