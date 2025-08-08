@@ -1,5 +1,5 @@
 // API Key (stored directly in code for simplicity)
-const API_KEY = 'AIzaSyDZmGivt8C4JgyZ3M9w2QVESJMXK2FIOSs';
+const API_KEY = 'YOUR_GEMINI_API_KEY';
 
 // DOM Elements
 const form = document.getElementById('legal-form');
