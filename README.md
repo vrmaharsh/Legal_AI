@@ -14,8 +14,7 @@ The **simplest possible** legal assistant using just HTML, CSS, and JavaScript.
 ✅ **Easy to learn** - Just basic web technologies  
 ✅ **Easy to explain** - No complex frameworks  
 ✅ **Works everywhere** - Any browser, any server  
-✅ **No build process** - Just open the HTML file  
-✅ **Interview friendly** - Demonstrates core web skills  
+✅ **No build process** - Just open the HTML file    
 
 ## Setup (3 Simple Steps)
 
