@@ -2,6 +2,9 @@
 
 The **simplest possible** legal assistant using just HTML, CSS, and JavaScript.
 
+<img width="259" height="810" alt="image" src="https://github.com/user-attachments/assets/7aff53c1-5ba4-4c82-a5c9-f676d0f8d59e" />
+
+
 ## Tech Stack (Super Simple!)
 - **HTML**: Structure and content
 - **CSS**: Styling and layout  
