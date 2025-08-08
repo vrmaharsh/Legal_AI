@@ -1,5 +1,5 @@
-// API Key (will be set by Netlify environment variable)
-const API_KEY = 'YOUR_API_KEY_HERE'; // Replace with your API key for local development
+// API Key (stored directly in code for simplicity)
+const API_KEY = 'AIzaSyDZmGivt8C4JgyZ3M9w2QVESJMXK2FIOSs';
 
 // DOM Elements
 const form = document.getElementById('legal-form');

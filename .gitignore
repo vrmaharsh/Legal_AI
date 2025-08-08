@@ -3,9 +3,3 @@ Thumbs.db
 
 # Local Netlify folder
 .netlify
-
-# Build files
-build.js
-
-# Exclude the actual script.js that contains API key
-script.js

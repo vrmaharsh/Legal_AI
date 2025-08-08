@@ -8,7 +8,7 @@ A simple legal assistant using HTML, CSS, and JavaScript that provides AI-powere
 - ⚖️ IPC sections and legal analysis
 - 📱 Mobile responsive
 - 🚀 Simple and lightweight
-- 🔒 Secure API key handling
+- ✅ No API key input needed
 
 ## Tech Stack
 - **HTML**: Structure and content
@@ -16,22 +16,11 @@ A simple legal assistant using HTML, CSS, and JavaScript that provides AI-powere
 - **JavaScript**: Logic and API calls
 - **Gemini AI**: Legal analysis
 
-## Setup (Secure)
+## Setup (2 Simple Steps)
+1. **Download the files**
+2. **Open `index.html` in your browser**
 
-### For Development:
-1. **Copy `script.template.js` to `script.js`**
-2. **Replace `YOUR_API_KEY_HERE` with your actual Gemini API key**
-3. **Open `index.html` in your browser**
-
-### For Production (Netlify):
-1. **Set environment variable `GEMINI_API_KEY` in Netlify dashboard**
-2. **Deploy to Netlify** - the build process will automatically inject the API key
-
-## Security
-- ✅ API key is never committed to GitHub
-- ✅ Uses environment variables in production
-- ✅ Template file for safe development
-- ✅ Build process handles key injection
+That's it! No API key needed, no installation, no build process.
 
 ## How It Works
 1. User types a legal query in any Indian language
