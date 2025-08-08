@@ -2,7 +2,7 @@
 
 The **simplest possible** legal assistant using just HTML, CSS, and JavaScript.
 
-![App Screenshot](public/placeholder.jpg)
+![App Screenshot](./screenshot.jpg)
 
 ## Tech Stack (Super Simple!)
 - **HTML**: Structure and content
