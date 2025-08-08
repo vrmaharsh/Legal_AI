@@ -2,8 +2,7 @@
 
 The **simplest possible** legal assistant using just HTML, CSS, and JavaScript.
 
-![App Screenshot](<img width="252" height="810" alt="image" src="https://github.com/user-attachments/assets/26450d1a-8929-4df9-a998-5eccd9b1d6ae" />
-)
+<img src="https://github.com/user-attachments/assets/26450d1a-8929-4df9-a998-5eccd9b1d6ae" alt="App Screenshot" width="252" height="810" />
 
 ## Tech Stack (Super Simple!)
 - **HTML**: Structure and content
