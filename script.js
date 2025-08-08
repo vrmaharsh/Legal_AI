@@ -11,51 +11,15 @@ const loading = document.getElementById('loading');
 const results = document.getElementById('results');
 const apiStatus = document.getElementById('api-status');
 const languageSelect = document.getElementById('language');
-const apiKeyInput = document.getElementById('api-key-input');
-const saveKeyBtn = document.getElementById('save-key-btn');
-const clearKeyBtn = document.getElementById('clear-key-btn');
 
 // Check API status on page load
 window.addEventListener('DOMContentLoaded', function() {
     apiStatus.innerHTML = '<div class="status-success">✅ Legal Assistant Ready - No API key needed!</div>';
 });
 
-// API key actions (now hidden since we don't need user API keys)
-if (saveKeyBtn) {
-    saveKeyBtn.style.display = 'none';
-}
-if (clearKeyBtn) {
-    clearKeyBtn.style.display = 'none';
-}
-if (apiKeyInput) {
-    apiKeyInput.style.display = 'none';
-}
 
-// Helper function to clean JSON response
-function cleanJsonResponse(text) {
-    let cleaned = text.trim();
-    
-    // Remove markdown code blocks
-    if (cleaned.startsWith('```json')) {
-        cleaned = cleaned.replace(/^```json\s*/, '');
-    }
-    if (cleaned.startsWith('```')) {
-        cleaned = cleaned.replace(/^```\s*/, '');
-    }
-    if (cleaned.endsWith('```')) {
-        cleaned = cleaned.replace(/\s*```$/, '');
-    }
-    
-    // Extract JSON part
-    const firstBrace = cleaned.indexOf('{');
-    const lastBrace = cleaned.lastIndexOf('}');
-    
-    if (firstBrace !== -1 && lastBrace !== -1 && lastBrace > firstBrace) {
-        cleaned = cleaned.substring(firstBrace, lastBrace + 1);
-    }
-    
-    return cleaned.trim();
-}
+
+
 
 // Show error
 function showError(message) {
