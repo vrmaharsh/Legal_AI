@@ -8,6 +8,7 @@ A simple legal assistant using HTML, CSS, and JavaScript that provides AI-powere
 - ⚖️ IPC sections and legal analysis
 - 📱 Mobile responsive
 - 🚀 Simple and lightweight
+- ✅ No API key input needed
 
 ## Tech Stack
 - **HTML**: Structure and content
@@ -15,19 +16,17 @@ A simple legal assistant using HTML, CSS, and JavaScript that provides AI-powere
 - **JavaScript**: Logic and API calls
 - **Gemini AI**: Legal analysis
 
-## Setup (3 Simple Steps)
+## Setup (2 Simple Steps)
 1. **Download the files**
 2. **Open `index.html` in your browser**
-3. **Paste your Gemini API key** in the input box and click Save
 
-That's it! No installation, no build process, no complex setup.
+That's it! No API key needed, no installation, no build process.
 
 ## How It Works
-1. User enters their Gemini API key (stored in localStorage)
-2. User types a legal query in any Indian language
-3. JavaScript detects the language and translates to English
-4. AI analyzes the query and provides legal guidance with IPC sections
-5. Results are displayed in a clean, organized format
+1. User types a legal query in any Indian language
+2. JavaScript detects the language and translates to English
+3. AI analyzes the query and provides legal guidance with IPC sections
+4. Results are displayed in a clean, organized format
 
 ## Test Queries
 - Hindi: `मुझे चोरी का मामला दर्ज करना है`

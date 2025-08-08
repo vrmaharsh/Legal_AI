@@ -1,8 +1,5 @@
-// API Key storage helpers (stored locally in the browser)
-const STORAGE_KEY = 'gemini_api_key';
-const getApiKey = () => localStorage.getItem(STORAGE_KEY) || '';
-const setApiKey = (key) => localStorage.setItem(STORAGE_KEY, key.trim());
-const clearApiKey = () => localStorage.removeItem(STORAGE_KEY);
+// API Key (stored directly in code for simplicity)
+const API_KEY = 'AIzaSyDZmGivt8C4JgyZ3M9w2QVESJMXK2FIOSs';
 
 // DOM Elements
 const form = document.getElementById('legal-form');
@@ -14,42 +11,11 @@ const loading = document.getElementById('loading');
 const results = document.getElementById('results');
 const apiStatus = document.getElementById('api-status');
 const languageSelect = document.getElementById('language');
-const apiKeyInput = document.getElementById('api-key-input');
-const saveKeyBtn = document.getElementById('save-key-btn');
-const clearKeyBtn = document.getElementById('clear-key-btn');
 
-// Check API key on page load
+// Check API status on page load
 window.addEventListener('DOMContentLoaded', function() {
-    const key = getApiKey();
-    if (key) {
-        apiStatus.innerHTML = '<div class="status-success">✅ API Key Configured - Ready to analyze legal queries</div>';
-    } else {
-        apiStatus.innerHTML = '<div class="status-error">⚠️ API Key Missing - Add your Gemini API key above and click Save</div>';
-    }
+    apiStatus.innerHTML = '<div class="status-success">✅ Legal Assistant Ready - Start asking your legal questions!</div>';
 });
-
-// API key actions
-if (saveKeyBtn) {
-    saveKeyBtn.addEventListener('click', () => {
-        const key = (apiKeyInput?.value || '').trim();
-        if (!key) {
-            showError('Please paste a valid Gemini API key');
-            return;
-        }
-        setApiKey(key);
-        hideError();
-        apiStatus.innerHTML = '<div class="status-success">✅ API Key Saved - Ready to analyze legal queries</div>';
-        apiKeyInput.value = '';
-    });
-}
-
-if (clearKeyBtn) {
-    clearKeyBtn.addEventListener('click', () => {
-        clearApiKey();
-        hideError();
-        apiStatus.innerHTML = '<div class="status-error">⚠️ API Key Cleared - Please add your Gemini API key above</div>';
-    });
-}
 
 // Helper function to clean JSON response
 function cleanJsonResponse(text) {
@@ -188,12 +154,6 @@ function displayResults(analysis) {
 async function analyzeLegalQuery(query) {
     if (!query.trim()) {
         showError('Please enter a legal query');
-        return;
-    }
-
-    const API_KEY = getApiKey();
-    if (!API_KEY) {
-        showError('Please add your Gemini API key using the input above and click Save');
         return;
     }
 
