@@ -2,6 +2,11 @@
 
 A simple legal assistant using HTML, CSS, and JavaScript that provides AI-powered legal guidance for Indian citizens.
 
+<img width="807" height="648" alt="image" src="https://github.com/user-attachments/assets/52e9eaf0-e88c-466a-8f6e-ecb4f61751f9" />
+<img width="762" height="806" alt="image" src="https://github.com/user-attachments/assets/61aad7ab-2dbc-41c8-899a-2410db32ad00" />
+<img width="762" height="691" alt="image" src="https://github.com/user-attachments/assets/8277babe-19f0-48f2-bb3c-379fa062fc49" />
+
+
 ## Features
 - 🌍 Multi-language support (10+ Indian languages)
 - 🔍 Auto language detection
