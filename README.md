@@ -1,26 +1,33 @@
 # Legal Assistant India 🏛️
 
-AI-powered legal guidance for Indian citizens in multiple languages.
+A simple legal assistant using HTML, CSS, and JavaScript that provides AI-powered legal guidance for Indian citizens.
 
 ## Features
 - 🌍 Multi-language support (10+ Indian languages)
 - 🔍 Auto language detection
 - ⚖️ IPC sections and legal analysis
 - 📱 Mobile responsive
-- 🚀 No API key needed for users
+- 🚀 Simple and lightweight
 
 ## Tech Stack
-- **Frontend**: HTML, CSS, JavaScript
-- **Backend**: Netlify Functions
-- **AI**: Google Gemini
+- **HTML**: Structure and content
+- **CSS**: Styling and layout
+- **JavaScript**: Logic and API calls
+- **Gemini AI**: Legal analysis
 
-## Setup
+## Setup (3 Simple Steps)
 1. **Download the files**
 2. **Open `index.html` in your browser**
+3. **Paste your Gemini API key** in the input box and click Save
 
-## Deployment
-1. Add `GEMINI_API_KEY` environment variable
-2. Deploy to Netlify
+That's it! No installation, no build process, no complex setup.
+
+## How It Works
+1. User enters their Gemini API key (stored in localStorage)
+2. User types a legal query in any Indian language
+3. JavaScript detects the language and translates to English
+4. AI analyzes the query and provides legal guidance with IPC sections
+5. Results are displayed in a clean, organized format
 
 ## Test Queries
 - Hindi: `मुझे चोरी का मामला दर्ज करना है`

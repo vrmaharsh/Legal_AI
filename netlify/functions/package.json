@@ -1,9 +1,0 @@
-{
-  "name": "legal-assistant-functions",
-  "version": "1.0.0",
-  "description": "Netlify functions for Legal Assistant AI",
-  "main": "analyze-legal.js",
-  "dependencies": {
-    "@google/generative-ai": "^0.21.0"
-  }
-}
