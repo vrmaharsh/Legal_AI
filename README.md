@@ -2,6 +2,8 @@
 
 The **simplest possible** legal assistant using just HTML, CSS, and JavaScript.
 
+![App Screenshot](public/placeholder.jpg)
+
 ## Tech Stack (Super Simple!)
 - **HTML**: Structure and content
 - **CSS**: Styling and layout  
@@ -30,24 +32,8 @@ That's it! No installation, no build process, no complex setup.
 - 📱 Mobile responsive
 - 🚀 Fast and lightweight
 
-## How to Explain in Interview
-
-**"I built a legal assistant using vanilla HTML, CSS, and JavaScript because:**
-- **HTML** structures the content and form
-- **CSS** handles all styling and responsive design
-- **JavaScript** manages user interactions and API calls
-- **Fetch API** communicates with Google Gemini AI
-- **No frameworks** means faster loading and easier maintenance"
-
 ## Test Queries
 - Hindi: `मुझे चोरी का मामला दर्ज करना है`
 - Tamil: `என் சொத்தை யாரோ ஆக்கிரமித்துள்ளனர்`
 - English: `My neighbor is harassing me`
 
-## Deploy Anywhere
-- GitHub Pages
-- Vercel
-- Netlify
-- Any web server
-
-Just upload the 3 files and it works! The API key is stored locally in your browser via localStorage.
